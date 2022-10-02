@@ -1,24 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
-const Cart = ({cartItems}) => {
-    const cartSummary = cartItems.reduce((acc, cur) => {
-        acc.selectedItems += cur.quantity;
-        acc.totalCost += (cur.price * cur.quantity);
-        acc.shippingCost += (cur.shipping * cur.quantity);
-        acc.tax = +(acc.totalCost * 0.1).toFixed(2);
-        acc.grandTotal = acc.totalCost + acc.shippingCost + acc.tax;
+const Cart = ({cartItems, cartSummary, setCartSummary}) => {
 
-        return acc;
-    }, {
-        selectedItems: 0, 
-        totalCost: 0, 
-        shippingCost: 0, 
-        tax: 0,
-        grandTotal: 0
-    });
+    useEffect(() => {
+        calcSummary(cartItems);
+    }, [cartItems]);
+
+    const calcSummary = newCart => {
+        const summary = newCart.reduce((acc, cur) => {
+            acc.selectedItems += cur.quantity;
+            acc.totalCost += (cur.price * cur.quantity);
+            acc.shippingCost += (cur.shipping * cur.quantity);
+            acc.tax = +(acc.totalCost * 0.1).toFixed(2);
+            acc.grandTotal = acc.totalCost + acc.shippingCost + acc.tax;
     
+            return acc;
+        }, {
+            selectedItems: 0, 
+            totalCost: 0, 
+            shippingCost: 0, 
+            tax: 0,
+            grandTotal: 0
+        });
+
+        setCartSummary(summary);
+    }
+   
     const {selectedItems, totalCost, shippingCost, tax, grandTotal} = cartSummary;
 
     return (
