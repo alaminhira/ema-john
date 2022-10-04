@@ -5,10 +5,7 @@ import Product from '../Product/Product';
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cartItems, setCartItems] = useState([]);
-<<<<<<< HEAD
-=======
     const [cartSummary, setCartSummary] = useState({});
->>>>>>> 2efdd421dbb0d6ef2fcca380331069641e250236
 
     useEffect(() => {
         fetch('products.json')
@@ -33,33 +30,6 @@ const Shop = () => {
         setCartItems(newCart);
     }
 
-<<<<<<< HEAD
-=======
-    // useEffect(() => {
-    //     calcSummary(cartItems);
-    // }, [cartItems])
-
-    // const calcSummary = newCart => {
-    //     const summary = newCart.reduce((acc, cur) => {
-    //         acc.selectedItems += cur.quantity;
-    //         acc.totalCost += (cur.price * cur.quantity);
-    //         acc.shippingCost += (cur.shipping * cur.quantity);
-    //         acc.tax = +(acc.totalCost * 0.1).toFixed(2);
-    //         acc.grandTotal = acc.totalCost + acc.shippingCost + acc.tax;
-    
-    //         return acc;
-    //     }, {
-    //         selectedItems: 0, 
-    //         totalCost: 0, 
-    //         shippingCost: 0, 
-    //         tax: 0,
-    //         grandTotal: 0
-    //     });
-
-    //     setCartSummary(summary);
-    // }
-
->>>>>>> 2efdd421dbb0d6ef2fcca380331069641e250236
 
     return (
         <section className='products-container mt-24'>
@@ -71,11 +41,8 @@ const Shop = () => {
                 </div>
             </div>
             <aside className="cart-container fixed right-0 top-0 mt-20 w-64 h-full bg-lightYellow">
-<<<<<<< HEAD
                 <Cart cartItems={cartItems} />
-=======
                 <Cart cartItems={cartItems} cartSummary={cartSummary} setCartSummary={setCartSummary} />
->>>>>>> 2efdd421dbb0d6ef2fcca380331069641e250236
             </aside>
         </section>
     );
