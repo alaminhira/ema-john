@@ -1,12 +1,9 @@
-const retriveFromDb = key => {
-    return JSON.parse(localStorage.getItem(key)) || {};
+const getFromDb = summary => {
+    return JSON.parse(localStorage.getItem(summary)) || {};
 }
 
-const storeToDb = (productId, quantity) => {
-    const cart = retriveFromDb('shopping-cart');
-
-    cart[productId] = quantity;
-    localStorage.setItem('shopping-cart', JSON.stringify(cart));
+const storeToDb = summary => {
+    localStorage.setItem('cart-summary', JSON.stringify(summary));
 }
 
-export {retriveFromDb, storeToDb};
+export {getFromDb, storeToDb};

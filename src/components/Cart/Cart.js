@@ -2,8 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 const Cart = ({cartItems}) => {
-    console.log(cartItems)
-    
+
     let total = 0,
     shipping = 0,
     tax = 0,
