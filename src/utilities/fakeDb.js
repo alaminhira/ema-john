@@ -1,9 +1,11 @@
-const getFromDb = summary => {
+const retriveFromDb = summary => {
     return JSON.parse(localStorage.getItem(summary)) || {};
 }
 
-const storeToDb = summary => {
-    localStorage.setItem('cart-summary', JSON.stringify(summary));
+const storeToDb = (id, quantity) => {
+    const cart = retriveFromDb('shopping-cart');
+    cart[id] = quantity;
+    localStorage.setItem('shopping-cart', JSON.stringify(cart));
 }
 
-export {getFromDb, storeToDb};
+export {retriveFromDb, storeToDb};
