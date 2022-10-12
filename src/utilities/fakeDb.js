@@ -8,4 +8,11 @@ const storeToDb = (id, quantity) => {
     localStorage.setItem('shopping-cart', JSON.stringify(cart));
 }
 
-export {retriveFromDb, storeToDb};
+const removeFromDb = id => {
+    const cart = retriveFromDb('shopping-cart');
+    delete cart[id];
+    console.log(cart);
+    localStorage.setItem('shopping-cart', JSON.stringify(cart));
+}
+
+export {retriveFromDb, storeToDb, removeFromDb};
